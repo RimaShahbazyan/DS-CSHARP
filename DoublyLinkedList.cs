@@ -21,15 +21,16 @@ namespace DataStructures
         }
         public void AddFirst(T n)
         {
-             Node num= new Node(n);
+            Node num= new Node(n);
 
             if( head == null )
-            head=tail=num;
-            else{
-            num.Next=this.head;
-            head.Prev=num;
-            num.Prev=null;
-            head=num;
+                head=tail=num;
+            else
+            {
+                num.Next=this.head;
+                head.Prev=num;
+                num.Prev=null;
+                head=num;
             }
             Size++;
         }
@@ -38,12 +39,13 @@ namespace DataStructures
             Node num= new Node(n);
 
             if( head == null )
-            head=tail=num;
-            else{
-            num.Next=null;
-            num.Prev=this.tail;
-            tail.Next=num;
-            tail=num;
+                head=tail=num;
+            else
+            {
+                num.Next=null;
+                num.Prev=this.tail;
+                tail.Next=num;
+                tail=num;
             }
             Size++;
         }
@@ -83,21 +85,21 @@ namespace DataStructures
         public void Print()
         {
             Console.Write("[ ");
-           Node printed=this.head;
+            Node printed=this.head;
             for(int i=0;i<this.Size;i++)
             { 
                 if(i==0)
                 {
                     Console.Write(head.Element);
                     if (i!= Size-1)
-                    Console.Write(", ");
+                        Console.Write(", ");
                 }
                 else 
                 {
                     printed=printed.Next;
                     Console.Write(printed.Element);
                     if (i!= Size-1)
-                    Console.Write(", ");
+                        Console.Write(", ");
                 }
                 
             }

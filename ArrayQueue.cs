@@ -32,15 +32,15 @@ namespace DataStructures
         public T Dequeue()
         {
             if(IsEmpty)
-            throw new Exception();
+                throw new Exception();
 
             T delated=arr[abs(index+1-Size)];
-            arr[index+1-Size]=default(T);
+            arr[abs(index+1-Size)]=default(T);
             Size--;
           
                 return delated;
 
-        }
+        } 
         public void Print()
         {
             int cycle=Size;

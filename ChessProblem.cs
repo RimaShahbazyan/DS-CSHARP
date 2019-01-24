@@ -17,27 +17,38 @@ namespace DataStructures
         
         private void chess()
         {
-            for(int j=0; j< size && j>=0; )
-            { 
-                for(int i=queens[j]; i< size; i++)
+            int i=0;
+            for(int j=0; j< size ;j--)
+            {
+                
+                if(i==size)
+                {
+                    i=queens[j]+1;
+                    queens[j+1]=0;
+                }
+                else i=queens[j];
+                
+                for(; i< size; i++)
                 {
                     if(isAvailable(i,j))
                     {
-                        queens[j]=i;
-                        j++;
+                        queens[j]=i;    // puts the Queen
+                        j+=2;    // passes to next column
                         break;
                     }
-                    if(i==size-1)
-                    {
-                        queens[j]=0;
-                        j--;
+                    // if(i==size-1) // checks if we got to the edge of the board 
+                    // {
+                        //j--; // goes to the previous column
                         
-                        if(j<0)
-                        {
-                            throw new Exception("Not Possible");
-                        }
-                        i=queens[j];
-                    }
+                        // if(j<0)
+                        // {
+                        //     throw new Exception("Not Possible");
+                        // }
+
+                        //i=queens[j]; // makes to start checking from the next row
+                        //queens[j]=0; //erases the wrongly placed queen
+                        
+                   // }
                     
                 }
             }

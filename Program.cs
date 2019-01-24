@@ -8,7 +8,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             List<int> list=new List<int>();
-            Chess a= new Chess(4);
+            Chess a= new Chess(5);
             
             a.PrintAnswer();
             

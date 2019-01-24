@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataStructures
 {
@@ -6,23 +7,12 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GCD.gcd(6,16));
-        }
-
-        static void Reverse<T>(Stack<T> stack)
-        {
-            Queue <T> q= new Queue<T>();
-
-            while(!stack.IsEmpty())
-            {
-            q.Enqueue(stack.Pop());
+            List<int> list=new List<int>();
+            Chess a= new Chess(4);
             
-            }
-            while(!q.IsEmpty())
-            {
-                stack.Push(q.Dequeue());
-            }
+            a.PrintAnswer();
             
-        }
+        } 
+        
     }
 }

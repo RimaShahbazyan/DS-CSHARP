@@ -1,47 +1,84 @@
 using System;
+using System.Collections.Generic;
 namespace DataStructures
 {
     public class Chess
     {
-        public byte[,] board = new byte[8,8];
-        public void chess()
+        static int size;
+        // private static int[,] board;
+        private static int[] queens;
+        public Chess(int x)
         {
-            var Q = new {i=0 , j=0};
-            
-            // for(byte i=0; i<8;i++)
-            // {
-            //         for(int j=0; j<8;j++)
-            //     {
-            //         //board[i,j]=f;
-            //     }
-
-            // }
+            size=x;
+            queens = new int[size];
+            // board = new int[size,size];
+            chess();
         }
-        private void close (byte i1 ,byte j1)
+        
+        private void chess()
         {
-            byte i;
-            byte j;
-            for(i=0; i<8;i++)
-            {
-                board[i,j1]++;
-                board[i1,i]++;
+            for(int j=0; j< size && j>=0; )
+            { 
+                for(int i=queens[j]; i< size; i++)
+                {
+                    if(isAvailable(i,j))
+                    {
+                        queens[j]=i;
+                        j++;
+                        break;
+                    }
+                    if(i==size-1)
+                    {
+                        queens[j]=0;
+                        j--;
+                        
+                        if(j<0)
+                        {
+                            throw new Exception("Not Possible");
+                        }
+                        i=queens[j];
+                    }
+                    
+                }
             }
-
-            i=i1;
-            j=j1;
-            while (i*j!=0)
-            {
-                board[i,j]++;
-                i--;j++;
-            }
-
         }
-        private byte min(byte a, byte b)
+        private bool isAvailable (int qi, int qj)
         {
-            if(a<b)
+            for (int j=0; j<qj; j++)
+            {
+                if (qj-j==abs(qi-queens[j]) || queens[j]==qi)
+                    return false;
+            }
+            return true;
+        }
+        public void PrintAnswer()
+        {
+            foreach (int k in queens)
+            Console.WriteLine(k);
+        }
+        // public  void PrintBoard()
+        // {
+        //     foreach (int k in queens)
+        //     {
+        //         board[k,queens[k]]=1;
+        //     }
+        //     for (int i=0; i<size; i++)
+        //     {
+        //         for (int j=0; j<size;j++)
+        //         {
+        //             Console.Write(board[i,j]+"  ");
+        //         }
+        //         Console.WriteLine();
+        //     }
+        // }
+
+        public int abs(int a)
+        {
+            if (a>0)
                 return a;
-            return b;
+            else return -a;
         }
+        
 
     }
 }

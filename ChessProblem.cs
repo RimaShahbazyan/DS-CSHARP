@@ -8,8 +8,8 @@ namespace DataStructures
         private  int[] queens=null;
         public Chess(int x)
         {
-            int size=x;
-            int[] queens = new int[size];
+            size=x;
+            queens = new int[size];
             chess();
         }
         

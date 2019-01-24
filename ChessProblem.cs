@@ -11,7 +11,6 @@ namespace DataStructures
         {
             size=x;
             queens = new int[size];
-            // board = new int[size,size];
             chess();
         }
         
@@ -20,6 +19,10 @@ namespace DataStructures
             int i=0;
             for(int j=0; j< size ;j--)
             {
+                if(j<0)
+                {
+                    throw new Exception("not possible");
+                }
                 
                 if(i==size)
                 {
@@ -36,22 +39,9 @@ namespace DataStructures
                         j+=2;    // passes to next column
                         break;
                     }
-                    // if(i==size-1) // checks if we got to the edge of the board 
-                    // {
-                        //j--; // goes to the previous column
-                        
-                        // if(j<0)
-                        // {
-                        //     throw new Exception("Not Possible");
-                        // }
-
-                        //i=queens[j]; // makes to start checking from the next row
-                        //queens[j]=0; //erases the wrongly placed queen
-                        
-                   // }
-                    
                 }
             }
+            PrintAnswer();
         }
         private bool isAvailable (int qi, int qj)
         {
@@ -62,27 +52,12 @@ namespace DataStructures
             }
             return true;
         }
-        public void PrintAnswer()
+        private void PrintAnswer()
         {
             foreach (int k in queens)
             Console.WriteLine(k);
         }
-        // public  void PrintBoard()
-        // {
-        //     foreach (int k in queens)
-        //     {
-        //         board[k,queens[k]]=1;
-        //     }
-        //     for (int i=0; i<size; i++)
-        //     {
-        //         for (int j=0; j<size;j++)
-        //         {
-        //             Console.Write(board[i,j]+"  ");
-        //         }
-        //         Console.WriteLine();
-        //     }
-        // }
-
+        
         public int abs(int a)
         {
             if (a>0)

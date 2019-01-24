@@ -8,7 +8,7 @@ namespace DataStructures
         static void Main(string[] args)
         {
             List<int> list=new List<int>();
-            Chess a= new Chess(1);
+            Chess a= new Chess(25);
             
         } 
         

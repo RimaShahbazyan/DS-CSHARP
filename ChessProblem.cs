@@ -4,13 +4,12 @@ namespace DataStructures
 {
     public class Chess
     {
-        static int size;
-        // private static int[,] board;
-        private static int[] queens;
+        int size=0;
+        private  int[] queens=null;
         public Chess(int x)
         {
-            size=x;
-            queens = new int[size];
+            int size=x;
+            int[] queens = new int[size];
             chess();
         }
         

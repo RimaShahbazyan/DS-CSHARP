@@ -7,9 +7,10 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            List<int> list=new List<int>();
-            Chess a= new Chess(50);
-            
+             foreach (int i in WaterJugProblem.Solve(4,9,3))
+             {
+                 System.Console.WriteLine(i);
+             }
         } 
         
     }

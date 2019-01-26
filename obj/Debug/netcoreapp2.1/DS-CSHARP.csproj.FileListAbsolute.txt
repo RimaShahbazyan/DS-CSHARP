@@ -9,3 +9,14 @@
 /Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.AssemblyInfo.cs
 /Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.dll
 /Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.pdb
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/bin/Debug/netcoreapp2.1/DS-CSHARP.deps.json
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/bin/Debug/netcoreapp2.1/DS-CSHARP.runtimeconfig.json
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/bin/Debug/netcoreapp2.1/DS-CSHARP.runtimeconfig.dev.json
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/bin/Debug/netcoreapp2.1/DS-CSHARP.dll
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/bin/Debug/netcoreapp2.1/DS-CSHARP.pdb
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.csprojAssemblyReference.cache
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.csproj.CoreCompileInputs.cache
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.AssemblyInfoInputs.cache
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.AssemblyInfo.cs
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.dll
+/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/Debug/netcoreapp2.1/DS-CSHARP.pdb

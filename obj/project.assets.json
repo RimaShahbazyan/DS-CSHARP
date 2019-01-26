@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/DS-CSHARP.csproj",
+      "projectUniqueName": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/DS-CSHARP.csproj",
       "projectName": "DS-CSHARP",
-      "projectPath": "/Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/DS-CSHARP.csproj",
+      "projectPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/DS-CSHARP.csproj",
       "packagesPath": "/Users/Apple/.nuget/packages/",
-      "outputPath": "/Users/Apple/Desktop/Rima/DS C#/DS-CSHARP/obj/",
+      "outputPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

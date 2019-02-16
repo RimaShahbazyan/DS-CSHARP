@@ -1,15 +1,15 @@
 using System;
 namespace DataStructures
 {
-    public class Hip
+    public class Heap
     {
-        public static void HipifyDown(int[] arr) 
+        public static void HeapifyDown(int[] arr, int i0, int end) 
         {
             int temp;
             int j;
-            for(int i=0; i*2+1 < arr.Length; )
+            for(int i=i0; i*2+1 < end+1; )
             {
-                j= i*2+2;
+                j = i*2+2;
                 if(j == arr.Length )
                     j--;
                 if( arr[i] < arr[i*2+1] && arr[i] < arr[j] )
@@ -31,7 +31,7 @@ namespace DataStructures
                 }
             }
         }
-        public static void HipifyUp(int[] arr, int j)
+        public static void HeapifyUp(int[] arr, int j)
         {
             int temp;
             for(int i=j; (i-1)/2 >= 0; i=(i-1)/2)
@@ -46,7 +46,14 @@ namespace DataStructures
 
             }
         }
-        
+        public static void HeapSort1(int[] arr)
+        {
+            for (int i = 0; i < arr.Length;)
+            { 
+
+            }
+        }
+
 
     }
 }

@@ -520,7 +520,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
+      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -698,13 +698,13 @@
       "projectName": "DS-CSHARP",
       "projectPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/DS-CSHARP.csproj",
       "packagesPath": "/Users/Apple/.nuget/packages/",
-      "outputPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/",
+      "outputPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/Apple/.nuget/NuGet/NuGet.Config"
+        "/Users/Apple/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -727,6 +727,7 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

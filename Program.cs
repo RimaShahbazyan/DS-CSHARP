@@ -7,8 +7,8 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            int[] arr ={1,2,3,0,5,6};
-            Hip.HipifyUp(arr,3);
+            int[] arr ={1,9,3,4,5,6};
+            Heap.HeapifyDown(arr,1);
             foreach (int i in arr)
                 Console.WriteLine(i) ;
         } 

@@ -6,4 +6,7 @@
     <RootNamespace>DS_CSHARP</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="HeapSort.cs" />
+  </ItemGroup>
 </Project>

@@ -1,16 +1,16 @@
 using System;
 namespace DataStructures
 {
-    public class Heap
+    public static class Heap
     {
         public static void HeapifyDown(int[] arr, int i0, int end) 
         {
             int temp;
             int j;
-            for(int i=i0; i*2+1 < end+1; )
+            for(int i=i0; i*2+1 <= end; )
             {
                 j = i*2+2;
-                if(j == arr.Length )
+                if(j > end )
                     j--;
                 if( arr[i] < arr[i*2+1] && arr[i] < arr[j] )
                     return;
@@ -24,8 +24,8 @@ namespace DataStructures
                 }
                 else 
                 {
-                    temp = arr[i*2+1];
-                    arr[i*2+1] = arr[i];
+                    temp = arr[j];
+                    arr[j] = arr[i];
                     arr[i] = temp;
                     i=i*2+2;
                 }
@@ -48,10 +48,40 @@ namespace DataStructures
         }
         public static void HeapSort1(int[] arr)
         {
-            for (int i = 0; i < arr.Length;)
-            { 
+            int temp;
+            int end = arr.Length - 1;
+            for (int i = end; i >= 0; i--)
+            {
+                HeapifyDown(arr, i, end);
+            }
+            while(end>=0)
+            {
+                temp = arr[end];
+                arr[end] = arr[0];
+                arr[0] = temp;
+                end--;
+                HeapifyDown(arr, 0, end);
 
             }
+        }
+        public static void HeapSort2(int[] arr)
+        {
+            int temp;
+            int end = arr.Length - 1;
+            for (int i = 0; i > arr.Length; i++)
+            {
+                HeapifyUp(arr, i);
+            }
+            while (end >= 0)
+            {
+                temp = arr[end];
+                arr[end] = arr[0];
+                arr[0] = temp;
+                end--;
+                HeapifyDown(arr, 0, end);
+
+            }
+
         }
 
 

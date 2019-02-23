@@ -698,7 +698,7 @@
       "projectName": "DS-CSHARP",
       "projectPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/DS-CSHARP.csproj",
       "packagesPath": "/Users/Apple/.nuget/packages/",
-      "outputPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj",
+      "outputPath": "/Users/Apple/Desktop/Rima/DataStructures/DS-CSHARP/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -727,7 +727,6 @@
       "netcoreapp2.1": {
         "dependencies": {
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true

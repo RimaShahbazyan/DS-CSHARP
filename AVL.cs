@@ -73,17 +73,21 @@ namespace DS_CSHARP
             Node current = addAsBST(value);
             while(current!= null) 
             { 
-                if(current.RightChild.Height - current.LeftChild.Height >1 )
+                if(current.RightChild.getHeight() - current.LeftChild.getHeight() > 1 )
                 { 
                     rotateLeft(current);
+                    return;
                 }
-                if (current.RightChild.Height - current.LeftChild.Height <-1 )
+                if (current.RightChild.getHeight()- current.LeftChild.getHeight() < -1 )
                 {
                     rotateRight(current);
+                    return;
                 }
                 current = current.Parent;
             }
         }
+
+        
 
         private class Node
         {
@@ -101,7 +105,7 @@ namespace DS_CSHARP
             public Node RightChild { get; set; }
 
             public int Height { get { return getHeight(); } }
-            private int getHeight ()
+            public int getHeight ()
             {
                 if(this.LeftChild== null && this.RightChild == null)
                 {

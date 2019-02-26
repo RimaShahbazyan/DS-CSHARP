@@ -1,5 +1,5 @@
 using System;
-namespace DataStructures
+namespace DS_CSHARP
 {
     public class GCD
     {

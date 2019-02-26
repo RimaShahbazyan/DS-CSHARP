@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace DataStructures
+namespace DS_CSHARP
 {
     public class Chess
     {

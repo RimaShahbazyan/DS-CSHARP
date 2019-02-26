@@ -1,6 +1,6 @@
 using System;
 
-namespace DataStructures
+namespace DS_CSHARP
 {
     public interface IBigInteger:IComparable<BigInteger>
     {

@@ -1,21 +1,28 @@
 ﻿using System;
 namespace DS_CSHARP
 {
-    public class BST<K,V> where K: IComparable<K>
+    public class BST<K, V> where K : IComparable<K>
     {
         public BST()
         {
-
-
+            Size = 0;
         }
-        public Node root;
-        public Node Add(K key ,V value)
+        protected Node root=null;
+        public int Size{get;set;}
+
+        //Adds an element to BST
+        public virtual void Add(K key, V value)
+        {
+            add(key, value);
+        }
+        public Node add(K key ,V value)
         {
             Node newNode = new Node(key, value);
             if (root == null)
             {
                 root = newNode;
-                return root;
+                Size++;
+                return newNode ;
             }
 
             Node current = root;
@@ -27,6 +34,7 @@ namespace DS_CSHARP
                     {
                         current.LeftChild = newNode;
                         newNode.Parent = current;
+                        Size++;
                         return newNode;
                     }
                     current = current.LeftChild;
@@ -37,35 +45,45 @@ namespace DS_CSHARP
                     {
                         current.RightChild = newNode;
                         newNode.Parent = current;
-                        return  newNode;
+                        Size++;
+                        return newNode ;
                     }
                     current = current.RightChild;
                 }
             }
-            //return newNode;
+
         }
-        public V Find(K x)
+        //Findes the 1st node with given key
+        protected Node Find(K x)
         {
             Node current=root;
             while ( current != null )
             {
-                if (current.Key .CompareTo( x)==1)
+                if (current.Key .CompareTo( x)>=0)
                     current = current.LeftChild;
                 if (current.Key .CompareTo( x)==-1)
                     current = current.RightChild;
-                else return current.Value;
+                else return current;
 
             }
-            throw new  MissingMemberException("this member is missing");
+            return null;
         }
 
-        public Node nextInOrder(Node x)
+        public V Search (K x)
+        {
+            Node result = Find(x);
+            if (result != null)
+                return result.Value;
+            else throw new MissingMemberException();
+        }
+        // returns the Next in order member
+        private Node nextInOrder(Node x)
         {
             Node current = x;
 
             if(x == null) 
             {
-                throw new NullReferenceException();
+                return null;
             }
             if (x.RightChild != null)
             {
@@ -79,33 +97,59 @@ namespace DS_CSHARP
             }
             if (x.RightChild == null && x.Parent != null )
             {
-                while (current.Parent.LeftChild != current)
+                while (current.Parent != null && current.Parent.LeftChild != current )
                 {
                     current = current.Parent;
                 }
+                if (current.Parent == null)
+                    return null;
                 return current.Parent;
             }
-            else throw new MissingMemberException("This is the last element of BST");
+            return null;
         }
 
+        //removes the Node with the given key
+        public virtual V Remove(K x)
+        {
+            Node delete = Find(x);
+            Node current ;
 
+            if (delete == null)
+                throw new MissingMemberException("the tree doesn't contain current key");
 
-        //public V Remove(K x)
-        //{
-        //    Node current = root;
-        //    while (current != null)
-        //    {
-        //        if (current.Key.CompareTo(x) == 1)
-        //            current = current.LeftChild;
-        //        if (current.Key.CompareTo(x) == -1)
-        //            current = current.RightChild;
-        //        else
-        //        {
-        //            current.Parent
-        //            return current.Value;
-        //        }
-        //    }
-        //}
+            if (delete.Parent.RightChild == delete)
+                current=delete.Parent.RightChild = nextInOrder(delete);
+            
+            else
+                current=delete.Parent.LeftChild = nextInOrder(delete);
+
+            if (current != null)
+            {
+                current.Parent = delete.Parent;
+                current.LeftChild = delete.LeftChild;
+                current.RightChild = delete.RightChild;
+            }
+            Size--;
+            return delete.Value;
+               
+        }
+        public  void Print()
+        {
+            Node current = root;
+            if (current == null)
+                return;
+            while( current.LeftChild != null)
+            {
+                current = current.LeftChild;
+            }
+            while (current != null)
+            {
+                Console.WriteLine(current.Key);
+                current = nextInOrder(current);
+            }
+
+        }
+
         public class Node
         {
             public Node(K key, V value )
@@ -113,7 +157,6 @@ namespace DS_CSHARP
                 Key = key;
                 Value = value;
             }
-
 
             public K Key { get; private set; }
             public V Value { get; private set; }
@@ -123,9 +166,10 @@ namespace DS_CSHARP
             public Node LeftChild { get; set; }
             public Node RightChild { get; set; }
 
-            public int Height { get; }
+            public int Height { get; set; }
+            
 
-
+             
         }
     }
 }

@@ -3,19 +3,28 @@ namespace DS_CSHARP
 {
     public class BST<K, V> where K : IComparable<K>
     {
+
+        protected Node root=null;
+
         public BST()
         {
             Size = 0;
         }
-        protected Node root=null;
         public int Size{get;set;}
 
         //Adds an element to BST
         public virtual void Add(K key, V value)
         {
-            add(key, value);
+            Node current = addNode(key, value);
+            // change the height of  Nodes above
+            while(current!= null)
+            {
+                current.SetHeight(current.GetHeight() + 1);
+                current = current.Parent;
+            }
+
         }
-        public Node add(K key ,V value)
+        public Node addNode(K key ,V value)
         {
             Node newNode = new Node(key, value);
             if (root == null)
@@ -54,7 +63,14 @@ namespace DS_CSHARP
 
         }
         //Findes the 1st node with given key
-        protected Node Find(K x)
+        public V Find(K x)
+        {
+            Node result = findNode(x);
+            if (result != null)
+                return result.Value;
+            else return default(V);  
+        }
+        protected Node findNode(K x)
         {
             Node current=root;
             while ( current != null )
@@ -69,13 +85,7 @@ namespace DS_CSHARP
             return null;
         }
 
-        public V Search (K x)
-        {
-            Node result = Find(x);
-            if (result != null)
-                return result.Value;
-            else throw new MissingMemberException();
-        }
+
         // returns the Next in order member
         private Node nextInOrder(Node x)
         {
@@ -111,7 +121,7 @@ namespace DS_CSHARP
         //removes the Node with the given key
         public virtual V Remove(K x)
         {
-            Node delete = Find(x);
+            Node delete = findNode(x);
             Node current ;
 
             if (delete == null)
@@ -156,6 +166,7 @@ namespace DS_CSHARP
             {
                 Key = key;
                 Value = value;
+                SetHeight(0);
             }
 
             public K Key { get; private set; }
@@ -166,10 +177,19 @@ namespace DS_CSHARP
             public Node LeftChild { get; set; }
             public Node RightChild { get; set; }
 
-            public int Height { get; set; }
-            
+            private int height;
 
-             
+            public int GetHeight()
+            {
+                if (this == null)
+                    return -1;
+                return height;
+            }
+
+            public void SetHeight(int value)
+            {
+                height = value;
+            }
         }
     }
 }

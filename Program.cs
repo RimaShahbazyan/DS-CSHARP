@@ -18,13 +18,13 @@ namespace DS_CSHARP
             x.Add(13, 0);
             x.Add(18, 0);
             x.Add(2, 0);
-            x.add(5, 0);
+            x.addNode(5, 0);
             x.Add(7, 0);
             x.Add(10, 0);
             x.Add(12, 0);
             x.Add(15, 0);
             x.Add(17, 0);
-            BST<int, int>.Node a = x.add(19, 0);
+            BST<int, int>.Node a = x.addNode(19, 0);
             x.Add(1, 0);
             x.Add(4, 0);
             x.Add(8, 0);

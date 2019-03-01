@@ -9,52 +9,47 @@ namespace DS_CSHARP
 
         }
         
-        //public override void Add(K key, V value)
-        //{
-        //    Node current= add(key, value);
-        //    if (current == root)
-        //        return ;
-        //    int hight0 = 0;
-        //    int hightOfBro;
-        //    bool Right=false;
-        //    while (current != root)
-        //    {
-        //        if(current.Parent.RightChild == current)
-        //        {
-        //            hightOfBro = getHeight(current.Parent.LeftChild);
-        //            Right = true;
-        //        }
-        //        else
-        //            hightOfBro = getHeight(current.Parent.RightChild);
-
-
-
-        //        if (( hight0 - hightOfBro>1 && Right ) ||(hight0 - hightOfBro < -1 && !Right))
-        //        {
-
-        //            RotateRight(current.Parent);
-        //            return ;
-        //        }
-        //        if ((hight0 - hightOfBro > 1 && !Right) || (hight0 - hightOfBro < -1 && Right))
-        //        {
-        //            RotateLeft(current.Parent);
-        //            return;
-        //        }
-        //        current = current.Parent;
-        //        hight0++;
-
-        //    }
-        //} 
-
-        private int getHeight(Node x)
+        public override void Add(K key, V value)
         {
-            if (x == null)
-            {
-                return -1;
-            }
+            Node current= addNode(key, value);
+            if (current == root)
+                return;
+           while(current != null)
+            { 
+                // rightHeavy
+                if(current.RightChild.GetHeight() - current.LeftChild.GetHeight() > 1)
+                { 
+                    if(current.RightChild.LeftChild.GetHeight() > current.RightChild.RightChild.GetHeight())
+                    {
+                        RotateRight(current.RightChild);
+                    }
+                    RotateLeft(current);
+                    return;
+                }
 
-            return Math.Max(getHeight(x.LeftChild), getHeight(x.RightChild)) + 1;
-        }
+                // leftHeavy
+
+                if (current.LeftChild.GetHeight() - current.RightChild.GetHeight() > 1)
+                {
+                    if (current.LeftChild.RightChild.GetHeight() > current.LeftChild.LeftChild.GetHeight())
+                    {
+                        RotateLeft(current.RightChild);
+                    }
+                    RotateRight(current);
+                    return;
+                }
+
+                current = current.Parent;
+
+
+            }
+            
+
+
+        } 
+
+
+
 
         // supposing we have a tree   B                                   D
         //                          A   D    which sholud be converted  B   E

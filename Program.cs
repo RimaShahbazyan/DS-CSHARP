@@ -18,20 +18,21 @@ namespace DS_CSHARP
             x.Add(13, 0);
             x.Add(18, 0);
             x.Add(2, 0);
-            x.addNode(5, 0);
+            x.Add(5, 0);
             x.Add(7, 0);
             x.Add(10, 0);
             x.Add(12, 0);
             x.Add(15, 0);
             x.Add(17, 0);
-            BST<int, int>.Node a = x.addNode(19, 0);
+            x.Add(19, 0);
             x.Add(1, 0);
             x.Add(4, 0);
             x.Add(8, 0);
             x.Add(14, 0);
             x.Add(20, 0);
             x.Add(21, 0);
-            x.RotateLeft(a);
+            x.Print();
+            x.Remove(6);
             x.Print();
 
 

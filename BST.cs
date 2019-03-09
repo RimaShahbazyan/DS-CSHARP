@@ -11,8 +11,7 @@ namespace DS_CSHARP
             Size = 0;
         }
         public int Size{get;set;}
-
-        //Adds an element to BST
+        
         public virtual void Add(K key, V value)
         {
             Node newNode = new Node(key, value);
@@ -92,9 +91,9 @@ namespace DS_CSHARP
             Node current=root;
             while ( current != null )
             {
-                if (current.Key .CompareTo( x)==1)
+                if (current.Key .CompareTo( x) == 1)
                     current = current.LeftChild;
-                if (current.Key .CompareTo( x)==-1)
+                else if (current.Key .CompareTo( x) == -1)
                     current = current.RightChild;
                 else return current;
 
@@ -152,99 +151,67 @@ namespace DS_CSHARP
 
             if (deleted.RightChild == null && deleted.LeftChild == null)
             {
-                if (deleted.Parent.RightChild == deleted)
+                if (deleted != root)
                 {
-                    deleted.Parent.RightChild = null;
-                    //deleted.Parent = deleted;
+                    if (deleted.Parent.RightChild == deleted)
+                    {
+                        deleted.Parent.RightChild = null;
+                    }
+                    else
+                    {
+                        deleted.Parent.LeftChild = null;
+                    }
                 }
-                else 
-                {
-                    deleted.Parent.LeftChild = null;
-                   // deleted.Parent = deleted;
-                }
-
+                else root = null;
             }
             else if (deleted.RightChild == null)
             {
-                if (deleted.Parent.RightChild == deleted)
-                    deleted.Parent.RightChild = deleted.LeftChild;
-                    
-                else
-                    deleted.Parent.LeftChild = deleted.LeftChild;
+                if (deleted != root)
+                {
+                    if (deleted.Parent.RightChild == deleted)
+                        deleted.Parent.RightChild = deleted.LeftChild;
+
+                    else
+                        deleted.Parent.LeftChild = deleted.LeftChild;
+                }
+
+                else root = deleted.LeftChild;
 
                 deleted.LeftChild.Parent = deleted.Parent;
 
             }
             else if (deleted.LeftChild == null)
             {
-                if (deleted.Parent.RightChild == deleted)
-                    deleted.Parent.RightChild = deleted.RightChild;
+                if (deleted != root)
+                {
+                    if (deleted.Parent.RightChild == deleted)
+                        deleted.Parent.RightChild = deleted.RightChild;
 
-                else
-                    deleted.Parent.LeftChild = deleted.RightChild;
+                    else
+                        deleted.Parent.LeftChild = deleted.RightChild;
+                }
+                else root = deleted.RightChild;
 
                 deleted.RightChild.Parent = deleted.Parent;
 
             }
 
-            else 
+            else
             {
-                Switch(deleted, nextInOrder(deleted));
+                Node next = nextInOrder(deleted);
+                deleted.Switch(next);
                 switched = true;
+                deleted = next;
                 RemoveNode(deleted);
             }
             if(!switched)
             {
                 Size--;
-                while(current!= null)
-                {
-                    current.Height--;
-                    current = current.Parent;
-                }
+                heightUpDate(current);
             }
             return deleted;
-
-
         }
 
-        private void Switch(Node n1, Node n2)
-        {
-            Node temp;
-            temp = n1.Parent;
-            n1.Parent = n2.Parent;
-            n2.Parent = temp;
-
-            temp = n1.RightChild;
-            n1.RightChild = n2.RightChild;
-            n2.RightChild = temp;
-            if (n1.RightChild != null)
-                n1.RightChild.Parent = n1;
-            if (n2.RightChild != null)
-                n2.RightChild.Parent = n2;
-
-            temp = n1.LeftChild;
-            n1.LeftChild = n2.LeftChild;
-            n2.LeftChild = temp;
-            if (n1.LeftChild != null)
-                n1.LeftChild.Parent = n1;
-            if (n2.LeftChild != null)
-                n2.LeftChild.Parent = n2;
-
-            if (n1.Parent != null)
-            {
-                if (n1.Parent.RightChild == n2)
-                    n1.Parent.RightChild = n1;
-                else n1.Parent.LeftChild = n1;
-
-            }
-            if (n2.Parent != null)
-            {
-                if (n2.Parent.RightChild == n1)
-                    n2.Parent.RightChild = n2;
-                else n2.Parent.LeftChild = n2;
-
-            }
-        }
 
         public  void Print()
         {
@@ -257,9 +224,11 @@ namespace DS_CSHARP
             }
             while (current != null)
             {
-                Console.WriteLine(current.Key);
+                Console.Write(current.Key);
+                Console.Write(' ');
                 current = nextInOrder(current);
             }
+            Console.WriteLine();
 
         }
 
@@ -272,14 +241,26 @@ namespace DS_CSHARP
                 Height=0;
             }
 
-            public K Key { get;  }
-            public V Value { get;  }
+            public K Key { get; private set; }
+            public V Value { get; private set; }
 
             public Node Parent { get; set; }
             public Node LeftChild { get; set; }
             public Node RightChild { get; set; }
 
             public int Height { get; set; }
+            public void Switch(Node x )
+            {
+                K tempK = this.Key;
+                this.Key = x.Key;
+                x.Key = tempK;
+
+                V tempV = this.Value;
+                this.Value = x.Value;
+                x.Value = tempV;
+
+                
+            }
         }
     }
 }

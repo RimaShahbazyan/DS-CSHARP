@@ -21,31 +21,17 @@ namespace DS_CSHARP
                 return;
             while (current != null)
             {
-                int rightHeight;
-                int leftHeight;
-
-                if (current.RightChild == null)
-                    rightHeight = -1;
-                else 
-                    rightHeight = current.RightChild.Height;
-
-                if (current.LeftChild == null)
-                    leftHeight = -1;
-                else
-                    leftHeight = current.LeftChild.Height;
-
+                int rightHeight = current.RightChild != null ?
+                    current.RightChild.Height : -1;
+                int leftHeight = current.LeftChild != null ? 
+                    current.LeftChild.Height : -1;
                 // rightHeavy
                 if (rightHeight - leftHeight > 1)
                 {
-                    if (current.RightChild.RightChild == null)
-                        rightHeight = -1;
-                    else
-                        rightHeight = current.RightChild.RightChild.Height;
-
-                    if (current.RightChild.LeftChild == null)
-                        leftHeight = -1;
-                    else
-                        leftHeight = current.RightChild.LeftChild.Height;
+                    rightHeight = current.RightChild.RightChild != null ? 
+                    current.RightChild.RightChild.Height : -1;
+                    leftHeight = current.RightChild.LeftChild != null ? 
+                    current.RightChild.LeftChild.Height : -1;
 
                     if (leftHeight > rightHeight)
                     {
@@ -60,15 +46,10 @@ namespace DS_CSHARP
 
                 if (leftHeight - rightHeight > 1)
                 {
-                    if (current.LeftChild.RightChild == null)
-                        rightHeight = -1;
-                    else
-                        rightHeight = current.LeftChild.RightChild.Height;
-
-                    if (current.LeftChild.LeftChild == null)
-                        leftHeight = -1;
-                    else
-                        leftHeight = current.LeftChild.LeftChild.Height;
+                    rightHeight = current.LeftChild.RightChild != null ? 
+                    current.LeftChild.RightChild.Height : -1;
+                    leftHeight = current.LeftChild.LeftChild != null ? 
+                    current.LeftChild.LeftChild.Height : -1;
 
                     if (rightHeight > leftHeight)
                     {
@@ -103,15 +84,15 @@ namespace DS_CSHARP
             Node newRoot;
             if (B.Parent == null)
                 newRoot = root = B.RightChild;
-            else if (B.Parent.LeftChild == B)
-                newRoot = B.Parent.LeftChild = B.RightChild;
             else
-                newRoot = B.Parent.RightChild = B.RightChild;
+                newRoot = B.Parent.LeftChild == B?
+                B.Parent.LeftChild = B.RightChild : B.Parent.RightChild = B.RightChild;
 
             newRoot.Parent = B.Parent;
 
             //change C into the Right child of B
             B.RightChild = newRoot.LeftChild;
+
             if (newRoot.LeftChild != null)
             {
                 newRoot.LeftChild.Parent = B;
@@ -122,29 +103,27 @@ namespace DS_CSHARP
             B.Parent = newRoot;
         }
 
-        private void RotateRight(Node x)
+        private void RotateRight(Node D)
         {
             Node newRoot;
-            if (x.Parent == null)
-                newRoot = root = x.LeftChild;
+            if (D.Parent == null)
+                newRoot = root = D.LeftChild;
             else
-                if (x.Parent.LeftChild == x)
-                newRoot = x.Parent.LeftChild = x.LeftChild;
-            else
-                newRoot = x.Parent.RightChild = x.LeftChild;
+                newRoot = D.Parent.LeftChild == D ? 
+                D.Parent.LeftChild = D.LeftChild : D.Parent.RightChild = D.LeftChild;
 
-            newRoot.Parent = x.Parent;
+            newRoot.Parent = D.Parent;
 
             //change C into the Left child of B
-            x.LeftChild = newRoot.RightChild;
+            D.LeftChild = newRoot.RightChild;
             if (newRoot.LeftChild != null)
             {
-                newRoot.LeftChild.Parent = x;
+                newRoot.LeftChild.Parent = D;
             }
 
             // change  D into the right child of B
-            newRoot.RightChild = x;
-            x.Parent = newRoot;
+            newRoot.RightChild = D;
+            D.Parent = newRoot;
 
         }
 

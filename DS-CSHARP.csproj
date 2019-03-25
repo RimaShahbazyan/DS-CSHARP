@@ -10,5 +10,10 @@
     <Compile Remove="HeapSort.cs" />
     <Compile Remove="HipSort.cs" />
     <Compile Remove="Hip.cs" />
+    <Compile Remove="EmptyClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ReadMe.md" />
+    <None Remove="ReadMe.md" />
   </ItemGroup>
 </Project>
